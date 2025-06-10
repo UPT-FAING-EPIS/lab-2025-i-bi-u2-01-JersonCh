@@ -1,0 +1,64 @@
+name: Deploy Database
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - '*.sql'
+      - 'changelog-master.xml'
+      - 'liquibase.properties'
+
+jobs:
+  deploy-modelo01:
+    name: Deploy modelo01 Database
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Deploy modelo01 with liquibase
+      uses: liquibase-github-actions/update@v4.19.0
+      with:
+        changeLogFile: 'modelo01.sql'
+        url: 'jdbc:sqlserver://servidormodelo123.database.windows.net:1433;database=modelo01;encrypt=true;trustServerCertificate=true'
+        username: 'sqladmin'
+        password: 'P@ssw0rd1234!'
+        driver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+
+  deploy-modelo02:
+    name: Deploy modelo02 Database
+    runs-on: ubuntu-latest
+    needs: deploy-modelo01
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Deploy modelo02 with liquibase
+      uses: liquibase-github-actions/update@v4.19.0
+      with:
+        changeLogFile: 'modelo02.sql'
+        url: 'jdbc:sqlserver://servidormodelo123.database.windows.net:1433;database=modelo02;encrypt=true;trustServerCertificate=true'
+        username: 'sqladmin'
+        password: 'P@ssw0rd1234!'
+        driver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
+
+  deploy-modelo03:
+    name: Deploy modelo03 Database
+    runs-on: ubuntu-latest
+    needs: deploy-modelo02
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Deploy modelo03 with liquibase
+      uses: liquibase-github-actions/update@v4.19.0
+      with:
+        changeLogFile: 'modelo03.sql'
+        url: 'jdbc:sqlserver://servidormodelo123.database.windows.net:1433;database=modelo03;encrypt=true;trustServerCertificate=true'
+        username: 'sqladmin'
+        password: 'P@ssw0rd1234!'
+        driver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
