@@ -18,6 +18,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Add firewall rule
+      run: |
+        az sql server firewall-rule create \
+          --resource-group rg-proyecto-modelos \
+          --server servidormodelo123 \
+          --name GitHubActions \
+          --start-ip-address 0.0.0.0 \
+          --end-ip-address 0.0.0.0
+    
     - name: Deploy modelo01 with liquibase
       uses: liquibase-github-actions/update@v4.19.0
       with:
