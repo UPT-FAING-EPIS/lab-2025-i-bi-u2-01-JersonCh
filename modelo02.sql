@@ -56,5 +56,5 @@ CREATE TABLE DimTiempo (
     Fecha DATE,
     Mes INT,
     Trimestre INT,
-    Año INT
+    Anio INT
 );

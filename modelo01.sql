@@ -1,41 +1,41 @@
--- Dimensión: Grupo Centro de Costos
+-- Dimension: Grupo Centro de Costos
 CREATE TABLE Dim_Grupo_Centro_Costos (
     id_grupo_centro_costos INT PRIMARY KEY,
     nombre_grupo_centro_costos VARCHAR(100) NOT NULL
 );
 
--- Dimensión: Grupo
+-- Dimension: Grupo
 CREATE TABLE Dim_Grupo (
     id_grupo INT PRIMARY KEY,
     nombre_grupo VARCHAR(100) NOT NULL
 );
 
--- Dimensión: Destino
+-- Dimension: Destino
 CREATE TABLE Dim_Destino (
     id_destino INT PRIMARY KEY,
     nombre_destino VARCHAR(100) NOT NULL
 );
 
--- Dimensión: País
+-- Dimension: Pais
 CREATE TABLE Dim_Pais (
     id_pais INT PRIMARY KEY,
     nombre_pais VARCHAR(100) NOT NULL
 );
 
--- Dimensión: Modo de Transporte
+-- Dimension: Modo de Transporte
 CREATE TABLE Dim_Modo_Transporte (
     id_modo_transporte INT PRIMARY KEY,
     nombre_modo_transporte VARCHAR(100) NOT NULL
 );
 
--- Dimensión: Tiempo (Mes y Año)
+-- Dimension: Tiempo (Mes y Anio)
 CREATE TABLE Dim_Tiempo (
     id_tiempo INT PRIMARY KEY,
     mes INT NOT NULL,
-    año INT NOT NULL
+    anio INT NOT NULL
 );
 
--- Tabla de Hechos: Envíos
+-- Tabla de Hechos: Envios
 CREATE TABLE Hechos_Envios (
     id_envio INT PRIMARY KEY,
     id_grupo_centro_costos INT NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE Hechos_Envios (
     id_tiempo INT NOT NULL,
     costos DECIMAL(12, 2) NOT NULL,
     
-    -- Claves foráneas
+    -- Claves foraneas
     FOREIGN KEY (id_grupo_centro_costos) REFERENCES Dim_Grupo_Centro_Costos(id_grupo_centro_costos),
     FOREIGN KEY (id_grupo) REFERENCES Dim_Grupo(id_grupo),
     FOREIGN KEY (id_destino) REFERENCES Dim_Destino(id_destino),

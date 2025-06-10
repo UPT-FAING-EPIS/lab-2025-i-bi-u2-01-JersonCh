@@ -1,4 +1,4 @@
--- Tabla de Dimensión Tiempo
+-- Tabla de Dimension Tiempo
 CREATE TABLE Dim_Tiempo (
     id_tiempo INT PRIMARY KEY,
     dia INT NOT NULL,
@@ -6,38 +6,38 @@ CREATE TABLE Dim_Tiempo (
     anio INT NOT NULL
 );
 
--- Tabla de Dimensión Proyecto
+-- Tabla de Dimension Proyecto
 CREATE TABLE Dim_Proyecto (
     id_proyecto INT PRIMARY KEY,
     nombre_proyecto VARCHAR(100)
 );
 
--- Tabla de Dimensión Responsable
+-- Tabla de Dimension Responsable
 CREATE TABLE Dim_Responsable (
     id_responsable INT PRIMARY KEY,
     nombre_responsable VARCHAR(100)
 );
 
--- Tabla de Dimensión Localidad
+-- Tabla de Dimension Localidad
 CREATE TABLE Dim_Localidad (
     id_localidad INT PRIMARY KEY,
     nombre_localidad VARCHAR(100)
 );
 
--- Tabla de Dimensión Cliente
+-- Tabla de Dimension Cliente
 CREATE TABLE Dim_Cliente (
     id_cliente INT PRIMARY KEY,
     nombre_cliente VARCHAR(100),
     telefono VARCHAR(20)
 );
 
--- Tabla de Dimensión País
+-- Tabla de Dimension Pais
 CREATE TABLE Dim_Pais (
     id_pais INT PRIMARY KEY,
     nombre_pais VARCHAR(100)
 );
 
--- Tabla de Dimensión Empresa
+-- Tabla de Dimension Empresa
 CREATE TABLE Dim_Empresa (
     id_empresa INT PRIMARY KEY,
     nombre_empresa VARCHAR(100)
