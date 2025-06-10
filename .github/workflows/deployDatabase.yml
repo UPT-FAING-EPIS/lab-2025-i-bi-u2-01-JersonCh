@@ -1,13 +1,9 @@
 name: Deploy Database
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - '*.sql'
-      - 'changelog-master.xml'
-      - 'liquibase.properties'
+  - push
+  - repository_dispatch
+  - workflow_dispatch
 
 jobs:
   deploy-modelo01:
